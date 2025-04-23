@@ -1,12 +1,11 @@
-import { Component, Input, input } from '@angular/core';
-import { Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-child',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './child.component.html',
   styleUrl: './child.component.css',
 })

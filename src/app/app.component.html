@@ -1,16 +1,8 @@
-<app-firstcomponent></app-firstcomponent>
-
 <h1>Parent Component</h1>
-<!-- <app-child [messageFromParent]="ParentMessage"></app-child> -->
-<!-- <app-child (messagetoparent)="receivemessage($event)"></app-child> -->
+
 <app-child [messageFromParent]="ParentMessage" (messagetoparent)="receivemessage($event)">
 </app-child>
 
-
 <p>Message received from child: {{ messagereceived }}</p>
-
-<h1>Parent Component</h1>
-
-<app-child></app-child>
 
 <button (click)="resetChildForm()">Reset Child Form</button>
