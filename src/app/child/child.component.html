@@ -1,0 +1,8 @@
+<h3>Child Component</h3>
+<p>Message From Parent: {{messageFromParent}}</p>
+
+<button (click)="senddatatoparent()">Send Data to Parent</button>
+
+<h2>Child Form</h2>
+<input [(ngModel)]="name" placeholder="Enter your name">
+<p>Name entered: {{ name }}</p>

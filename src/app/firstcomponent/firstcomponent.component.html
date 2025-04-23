@@ -1,0 +1,84 @@
+<h1>Welcome to {{sitename}}</h1>
+
+<img [src]="" alt="Placeholder image">
+
+
+<!-- Event Binding -->
+<div>
+      <p>Button Clicked {{counter}} times</p>
+      <button (click)="incrementcounter()">Clickme!</button>
+</div>
+
+<!-- two-way binding -->
+
+<div>
+      <!-- <input [([(ngModel)]="binding")]="username" placeholder="Enter Your Name"> -->
+      <input [(ngModel)]="username" placeholder="Enter Your Username">
+      <P>Hello, {{username}}</P>
+
+</div>
+
+
+<div>
+      <h1 *ngIf="isloggedin">Welcome back, {{username}}</h1>
+      <h1 *ngIf="!isloggedin">Please Login First</h1>
+      <button (click)="togglelogin()">Toggle Login</button>
+</div>
+
+<div>
+      <ul>
+            <li *ngFor="let user of users">{{user}}</li>
+      </ul>
+</div>
+
+<div>
+      <h2>List Of Users:</h2>
+      <ul *ngIf="users.length > 0; else nousers">
+            <li *ngFor="let user of users ; let i = index ; let first = first ; let last = last">{{i+1}}.{{user}}
+                  <span *ngIf="first" style="color: green;">-First User</span>
+                  <span *ngIf="last" style="color: red;">-Last User</span>
+            </li>
+      </ul>
+      <ng-template #nousers>
+            <p style="color: gray;">No Users Found, Please Add some Users!</p>
+      </ng-template>
+</div>
+
+<div>
+      <h2 [class.special]="isSpecial">This heading has a special class if "isSpecial" is true</h2>
+      <h2 [style.color]="textColor">This heading color is controlled by 'textColor' variable!</h2>
+      <h2 [class.success]="isSuccess" [class.failure]="!isSuccess">This heading will be green if success, red id failure
+      </h2>
+      <button (click)="togglesuccess()">Toggle success/Failure</button>
+</div>
+
+<h2 [ngClass]="dynamicclass">Angular is awesome!</h2>
+
+<h2 [ngClass]="{
+      'success':isSuccess,
+      'failure':!isSuccess,}">
+      Conditional Styling
+</h2>
+
+<h2 [ngClass]="['class1' , 'class2']">multiple class always applied</h2>
+
+<h2 [ngClass]="setclasses()">Using Method</h2>
+
+<h2 [ngStyle]="{'color':'blue', 'font-weight':'bold'}">Styled text</h2>
+
+<h2 [ngStyle]="{
+      'color': isError ? 'red' : 'green',
+      'font-style' : isSpecial ? 'italic' : 'normal'
+}">
+      Conditional Styling
+</h2>
+
+<h2 [ngStyle]="setstyles()">Using Method</h2>
+
+
+<div [ngClass]="isDarkMode ? 'dark-mode' : 'light-mode'" class="main-container">
+      <h1>Welcome to my angular app</h1>
+      <p>THis is a simple dark/light mode example.</p>
+
+      <button (click)="toggleMode()">Switch to {{ isDarkMode ? 'Light' : 'Dark' }} Mode</button>
+</div>
