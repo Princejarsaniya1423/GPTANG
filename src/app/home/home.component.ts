@@ -1,32 +1,31 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ChildComponent } from './child/child.component';
+import { ChildComponent } from '../child/child.component';
+
 @Component({
-  selector: 'app-root',
+  selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, ChildComponent, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  imports: [FormsModule, ChildComponent],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
 })
-export class AppComponent {
-  ParentMessage = 'Hello form parent!';
-  title = 'Firstapp';
+export class HomeComponent {
+  ParentMessage = 'Hello from parent!';
   messagereceived = '';
   commentMsg = '';
+
+  @ViewChild(ChildComponent) childComponent!: ChildComponent;
+  @ViewChild('commentContainer') commentContainer!: ElementRef;
+
+  constructor(private renderer: Renderer2) {}
 
   receivemessage(message: string) {
     this.messagereceived = message;
   }
-  @ViewChild(ChildComponent) childComponent!: ChildComponent;
 
   resetChildForm() {
     this.childComponent.resetForm();
   }
-
-  @ViewChild('commentContainer') commentContainer!: ElementRef;
-
-  constructor(private renderer: Renderer2) {}
 
   addComment() {
     const commentDiv = this.renderer.createElement('div');
@@ -36,7 +35,7 @@ export class AppComponent {
     this.renderer.setStyle(commentDiv, 'border-radius', '5px');
     this.renderer.setStyle(commentDiv, 'display', 'flex');
     this.renderer.setStyle(commentDiv, 'justify-content', 'space-between');
-    this.renderer.setStyle(commentDiv, 'align-item', 'center');
+    this.renderer.setStyle(commentDiv, 'align-items', 'center');
 
     const text = this.renderer.createText(this.commentMsg);
     this.renderer.appendChild(commentDiv, text);
@@ -60,7 +59,6 @@ export class AppComponent {
     });
 
     this.renderer.appendChild(commentDiv, deletebtn);
-
     this.renderer.appendChild(this.commentContainer.nativeElement, commentDiv);
   }
 }

@@ -1,0 +1,13 @@
+<p>home works!</p>
+<h1>Parent Component</h1>
+
+<app-child [messageFromParent]="ParentMessage" (messagetoparent)="receivemessage($event)">
+</app-child>
+
+<p>Message received from child: {{ messagereceived }}</p>
+
+<button (click)="resetChildForm()">Reset Child Form</button>
+
+<section #commentContainer></section>
+<input [(ngModel)]="commentMsg">
+<button (click)="addComment()">Add Comment</button>

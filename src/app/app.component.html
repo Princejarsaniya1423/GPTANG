@@ -1,11 +1,6 @@
-<h1>Parent Component</h1>
+<nav>
+      <a routerLink="/home">Home</a>
+      <a routerLink="/about">About</a>
+</nav>
 
-<app-child [messageFromParent]="ParentMessage" (messagetoparent)="receivemessage($event)">
-</app-child>
-
-<p>Message received from child: {{ messagereceived }}</p>
-
-<button (click)="resetChildForm()">Reset Child Form</button>
-<section #commentContainer></section>
-<input [(ngModel)]="commentMsg">
-<button (click)="addComment()">Add Comment</button>
+<router-outlet></router-outlet>
