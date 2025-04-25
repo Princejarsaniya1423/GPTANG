@@ -1,7 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ChildComponent } from '../child/child.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -17,7 +17,7 @@ export class HomeComponent {
   @ViewChild(ChildComponent) childComponent!: ChildComponent;
   @ViewChild('commentContainer') commentContainer!: ElementRef;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private router: Router) {}
 
   receivemessage(message: string) {
     this.messagereceived = message;
@@ -60,5 +60,8 @@ export class HomeComponent {
 
     this.renderer.appendChild(commentDiv, deletebtn);
     this.renderer.appendChild(this.commentContainer.nativeElement, commentDiv);
+  }
+  goToAbout() {
+    this.router.navigate(['/about']);
   }
 }

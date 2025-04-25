@@ -11,4 +11,13 @@ export const routes: Routes = [
   { path: 'parent', component: AppComponent },
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: '**', component: AppComponent },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.routes').then((m) => m.routes),
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./home/home.component').then((m) => m.HomeComponent),
+  },
 ];
